@@ -287,7 +287,7 @@ class EncoderDecoderMixin:
         labels,
         **kwargs
     ):
-        torch.manual_seed(0)
+#        torch.manual_seed(0)
         encoder_model, decoder_model = self.get_encoder_decoder_model(config, decoder_config)
         model = EncoderDecoderModel(encoder=encoder_model, decoder=decoder_model)
         model.to(torch_device)
@@ -296,7 +296,7 @@ class EncoderDecoderMixin:
         decoder_state_dict = model.decoder._modules[model.decoder.base_model_prefix].state_dict()
         model.encoder.load_state_dict(decoder_state_dict, strict=False)
 
-        torch.manual_seed(0)
+#        torch.manual_seed(0)
         tied_encoder_model, tied_decoder_model = self.get_encoder_decoder_model(config, decoder_config)
         config = EncoderDecoderConfig.from_encoder_decoder_configs(
             tied_encoder_model.config, tied_decoder_model.config, tie_encoder_decoder=True

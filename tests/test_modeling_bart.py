@@ -74,7 +74,7 @@ class ModelTester:
         self.eos_token_id = 2
         self.pad_token_id = 1
         self.bos_token_id = 0
-        torch.manual_seed(0)
+#        torch.manual_seed(0)
 
     def prepare_config_and_inputs_for_common(self):
         input_ids = ids_tensor([self.batch_size, self.seq_length], self.vocab_size).clamp(

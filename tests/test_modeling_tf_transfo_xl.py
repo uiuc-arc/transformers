@@ -53,7 +53,7 @@ class TFTransfoXLModelTester:
         self.div_val = 2
         self.num_hidden_layers = 5
         self.scope = None
-        self.seed = 1
+#        self.seed = 1
         self.eos_token_id = 0
 
     def prepare_config_and_inputs(self):
@@ -82,9 +82,9 @@ class TFTransfoXLModelTester:
 
         return (config, input_ids_1, input_ids_2, lm_labels)
 
-    def set_seed(self):
-        random.seed(self.seed)
-        tf.random.set_seed(self.seed)
+#    def set_seed(self):
+#        random.seed(self.seed)
+#        tf.random.set_seed(self.seed)
 
     def create_and_check_transfo_xl_model(self, config, input_ids_1, input_ids_2, lm_labels):
         model = TFTransfoXLModel(config)
@@ -155,12 +155,12 @@ class TFTransfoXLModelTest(TFModelTesterMixin, unittest.TestCase):
         self.config_tester.run_common_tests()
 
     def test_transfo_xl_model(self):
-        self.model_tester.set_seed()
+#        self.model_tester.set_seed()
         config_and_inputs = self.model_tester.prepare_config_and_inputs()
         self.model_tester.create_and_check_transfo_xl_model(*config_and_inputs)
 
     def test_transfo_xl_lm_head(self):
-        self.model_tester.set_seed()
+#        self.model_tester.set_seed()
         config_and_inputs = self.model_tester.prepare_config_and_inputs()
         self.model_tester.create_and_check_transfo_xl_lm_head(*config_and_inputs)
 

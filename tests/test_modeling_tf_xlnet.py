@@ -63,7 +63,7 @@ class TFXLNetModelTester:
         self.bi_data = False
         self.same_length = False
         self.initializer_range = 0.05
-        self.seed = 1
+#        self.seed = 1
         self.type_vocab_size = 2
         self.bos_token_id = 1
         self.eos_token_id = 2
@@ -128,9 +128,9 @@ class TFXLNetModelTester:
             is_impossible_labels,
         )
 
-    def set_seed(self):
-        random.seed(self.seed)
-        tf.random.set_seed(self.seed)
+#    def set_seed(self):
+#        random.seed(self.seed)
+#        tf.random.set_seed(self.seed)
 
     def create_and_check_xlnet_base_model(
         self,
@@ -357,17 +357,17 @@ class TFXLNetModelTest(TFModelTesterMixin, unittest.TestCase):
         self.config_tester.run_common_tests()
 
     def test_xlnet_base_model(self):
-        self.model_tester.set_seed()
+#        self.model_tester.set_seed()
         config_and_inputs = self.model_tester.prepare_config_and_inputs()
         self.model_tester.create_and_check_xlnet_base_model(*config_and_inputs)
 
     def test_xlnet_lm_head(self):
-        self.model_tester.set_seed()
+#        self.model_tester.set_seed()
         config_and_inputs = self.model_tester.prepare_config_and_inputs()
         self.model_tester.create_and_check_xlnet_lm_head(*config_and_inputs)
 
     def test_xlnet_sequence_classif(self):
-        self.model_tester.set_seed()
+#        self.model_tester.set_seed()
         config_and_inputs = self.model_tester.prepare_config_and_inputs()
         self.model_tester.create_and_check_xlnet_sequence_classif(*config_and_inputs)
 
@@ -376,7 +376,7 @@ class TFXLNetModelTest(TFModelTesterMixin, unittest.TestCase):
         self.model_tester.create_and_check_xlnet_for_token_classification(*config_and_inputs)
 
     def test_xlnet_qa(self):
-        self.model_tester.set_seed()
+#        self.model_tester.set_seed()
         config_and_inputs = self.model_tester.prepare_config_and_inputs()
         self.model_tester.create_and_check_xlnet_qa(*config_and_inputs)
 

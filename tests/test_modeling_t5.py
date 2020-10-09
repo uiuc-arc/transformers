@@ -287,11 +287,11 @@ class T5ModelTester:
         lm_labels,
     ):
         model = T5ForConditionalGeneration(config=config).to(torch_device).eval()
-        torch.manual_seed(0)
+#        torch.manual_seed(0)
         output_without_past_cache = model.generate(
             input_ids[:1], num_beams=2, max_length=5, do_sample=True, use_cache=False
         )
-        torch.manual_seed(0)
+#        torch.manual_seed(0)
         output_with_past_cache = model.generate(input_ids[:1], num_beams=2, max_length=5, do_sample=True)
         self.parent.assertTrue(torch.all(output_with_past_cache == output_without_past_cache))
 
@@ -318,12 +318,12 @@ class T5ModelTester:
         lm_labels,
     ):
         for model_class in [T5Model, T5ForConditionalGeneration]:
-            torch.manual_seed(0)
+#            torch.manual_seed(0)
             model = model_class(config=config).to(torch_device).eval()
             # load state dict copies weights but does not tie them
             model.encoder.load_state_dict(model.decoder.state_dict(), strict=False)
 
-            torch.manual_seed(0)
+#            torch.manual_seed(0)
             tied_config = copy.deepcopy(config)
             tied_config.tie_encoder_decoder = True
             tied_model = model_class(config=tied_config).to(torch_device).eval()

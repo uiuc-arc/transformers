@@ -315,9 +315,9 @@ class ModelTesterMixin:
         if not self.test_head_masking:
             return
 
-        global_rng.seed(42)
+#        global_rng.seed(42)
         config, inputs_dict = self.model_tester.prepare_config_and_inputs_for_common()
-        global_rng.seed()
+#        global_rng.seed()
 
         inputs_dict["output_attentions"] = True
         config.output_hidden_states = True
@@ -573,7 +573,7 @@ class ModelTesterMixin:
             inputs_dict,
         ) = self.model_tester.prepare_config_and_inputs_for_common()
         for model_class in self.all_model_classes:
-            torch.manual_seed(0)
+#            torch.manual_seed(0)
             config = copy.deepcopy(original_config)
             model = model_class(config)
             model.to(torch_device)
@@ -581,7 +581,7 @@ class ModelTesterMixin:
 
             hidden_states_no_chunk = model(**self._prepare_for_class(inputs_dict, model_class))[0]
 
-            torch.manual_seed(0)
+#            torch.manual_seed(0)
             config.chunk_size_feed_forward = 1
             model = model_class(config)
             model.to(torch_device)
